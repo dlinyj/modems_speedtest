@@ -1,0 +1,12 @@
+[Unit]
+Description=Modem Speed Test
+Requires=systemd-networkd-wait-online.service
+After=systemd-networkd-wait-online.service
+[Service]
+User=khadas
+ExecStart=/usr/bin/python3.6 /home/khadas/modems_speedtest/networks.py
+RestartSec=5
+Restart=always
+[Install]
+WantedBy=multi-user.target
+

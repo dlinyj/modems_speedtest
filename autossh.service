@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto Reverse SSH
+Requires=systemd-networkd-wait-online.service
+After=systemd-networkd-wait-online.service
+[Service]
+User=khadas
+ExecStart=/usr/bin/ssh -NT -o ExitOnForwardFailure=yes -o ServerAliveInterval=60 -CD 8080 -R 8083:localhost:22 vimssh@host.com
+RestartSec=5
+Restart=always
+[Install]
+WantedBy=multi-user.target
+
